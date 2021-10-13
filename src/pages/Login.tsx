@@ -1,7 +1,7 @@
 import { FormEvent, useState } from 'react'
-import { setPlayerName } from 'actions';
+import { setPlayerName, setUserData } from 'actions';
 import { connect } from 'react-redux';
-import { setUserData } from 'actions/userActions';
+import { backend_url } from 'config';
 
 const Login = ({ setPlayerName, setUserData }: any) => {
   const [value, setValue] = useState("")
@@ -18,7 +18,7 @@ const Login = ({ setPlayerName, setUserData }: any) => {
 
     setSubmitting(true)
     try {
-      const res = await fetch('http://localhost:5000/user/register', {
+      const res = await fetch(`${backend_url}/user/register`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',

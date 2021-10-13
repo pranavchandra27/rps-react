@@ -1,5 +1,7 @@
+import { backend_url } from 'config';
 import { FC, useEffect, useState } from "react";
 import { IoIosClose } from "react-icons/io";
+
 
 interface ModalProps {
   open: boolean;
@@ -13,7 +15,7 @@ const Modal: FC<ModalProps> = (props) => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch(`http://localhost:5000/user`);
+        const res = await fetch(`${backend_url}/user`);
         let users = await res.json();
         users = users.sort((a: any, b: any) => b.score - a.score)
         setUsers(users);

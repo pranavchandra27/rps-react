@@ -3,15 +3,16 @@ import BgTriangle from "assets/bg-triangle.svg";
 import paperImage from "assets/icon-paper.svg";
 import rockImage from "assets/icon-rock.svg";
 import scissorsImage from "assets/icon-scissors.svg";
+import { backend_url } from "config";
 import {
   resetScores,
   updateMoves,
   updatePlayerScore,
   updateComputerScore,
   setGameStarted,
+  setUserData
 } from "actions";
-import { connect } from "react-redux";
-import { setUserData } from "actions/userActions";
+import { connect } from "react-redux";;
 
 const ROCK = "rock",
   PAPER = "paper",
@@ -185,7 +186,7 @@ const HandPicker = (props: any) => {
       };
 
       try {
-        const res = await fetch(`http://localhost:5000/user/${playerName}`, {
+        const res = await fetch(`${backend_url}/user/${playerName}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -210,7 +211,7 @@ const HandPicker = (props: any) => {
 
   const updateUserInfo = async (data = {}) => {
     try {
-      const res = await fetch(`http://localhost:5000/user/${playerName}`, {
+      const res = await fetch(`${backend_url}/user/${playerName}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
