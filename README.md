@@ -1,6 +1,6 @@
 ## Rock Paper Scissors Game.
 
-This is front-end for rock-paper-scissors game
+This was built in React.js with Redux for state management and Tailwind for styling
 
 ### Here are some screenshots
 
