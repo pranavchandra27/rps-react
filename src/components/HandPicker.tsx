@@ -226,7 +226,7 @@ const HandPicker = (props: any) => {
   };
 
   return (
-    <div className="mt-20 w-full flex justify-center items-center">
+    <div className="hand-picker w-full flex justify-center items-center">
       {isGameOver ? (
         <div className="text-center">
           <p className="text-xl text-gray-200 font-bold">
@@ -264,25 +264,27 @@ const HandPicker = (props: any) => {
       ) : !playerHand ? (
         <div>
           <div className="relative">
-            <img src={BgTriangle} alt="triangle" />
+            <div className='md:w-80 sm:w-60 md:h-80 w-56 sm:h-60 h-56 '>
+              <img src={BgTriangle} alt="triangle" />
+            </div>
 
             <button
               onClick={() => pickPlayerHand("paper")}
-              className="transform motion-safe:hover:scale-110 absolute -top-14 -left-14 bg-gray-200 w-32 h-32 flex justify-center items-center rounded-full hand-border border-blue-500"
+              className="transform motion-safe:hover:scale-110 absolute md:-top-14 sm:-top-12 -top-10 md:-left-14 sm:-left-12 -left-10 bg-gray-200 md:w-32 sm:w-28 w-24 md:h-32 sm:h-28 h-24 flex justify-center items-center rounded-full hand-border border-blue-500"
             >
-              <img src={paperImage} alt="Paper" />
+              <img className="w-10 sm:w-12 md:w-14" src={paperImage} alt="Paper" />
             </button>
             <button
               onClick={() => pickPlayerHand("scissors")}
-              className="transform motion-safe:hover:scale-110 absolute -top-14 -right-14 bg-gray-200 w-32 h-32 flex justify-center items-center rounded-full hand-border border-yellow-500"
+              className="transform motion-safe:hover:scale-110 absolute md:-top-14 sm:-top-12 -top-10 md:-right-14 sm:-right-12 -right-10 bg-gray-200 md:w-32 sm:w-28 w-24 md:h-32 sm:h-28 h-24 flex justify-center items-center rounded-full hand-border border-yellow-500"
             >
-              <img src={scissorsImage} alt="Scissors" />
+              <img className="w-10 sm:w-12 md:w-14" src={scissorsImage} alt="Scissors" />
             </button>
             <button
               onClick={() => pickPlayerHand("rock")}
-              className="transform motion-safe:hover:scale-110 absolute -bottom-14 left-20 bg-gray-200 w-32 h-32 flex justify-center items-center rounded-full hand-border border-red-500"
+              className="transform motion-safe:hover:scale-110 absolute sm:-bottom-10 -bottom-8 md:-bottom-4 md:left-24 left-16 bg-gray-200 md:w-32 sm:w-28 w-24 md:h-32 sm:h-28 h-24 flex justify-center items-center rounded-full hand-border border-red-500"
             >
-              <img src={rockImage} alt="Rock" />
+              <img className="w-10 sm:w-12 md:w-14" src={rockImage} alt="Rock" />
             </button>
           </div>
           {/* <div className="text-center mt-20">
@@ -292,40 +294,97 @@ const HandPicker = (props: any) => {
           </div> */}
         </div>
       ) : (
-        <div className="transition-all duration-300 ease-in-out flex items-center">
-          <div
-            className={`bg-gray-200 w-60 h-60 flex justify-center items-center rounded-full hand-border border-${playerHand === "paper"
-              ? "blue"
-              : playerHand === "scissors"
-                ? "yellow"
-                : "red"
-              }-500`}
-          >
-            <img
-              src={
-                playerHand === "paper"
-                  ? paperImage
+        <div className="transition-all duration-300 ease-in-out flex sm:flex-row flex-col items-center">
+          <div className="flex items-center">
+            <div className="text-center">
+              <div
+                className={`bg-gray-200 md:w-60 sm:w-40 w-32 sm:h-40 md:h-60 h-32 flex justify-center items-center rounded-full hand-border border-${playerHand === "paper"
+                  ? "blue"
                   : playerHand === "scissors"
-                    ? scissorsImage
-                    : rockImage
-              }
-              alt="Paper"
-            />
-          </div>
-          <div className=" mx-10">
+                    ? "yellow"
+                    : "red"
+                  }-500`}
+              >
+                <img
+                  className="md:w-20 sm:16"
+                  src={
+                    playerHand === "paper"
+                      ? paperImage
+                      : playerHand === "scissors"
+                        ? scissorsImage
+                        : rockImage
+                  }
+                  alt="Paper"
+                />
+              </div>
+              <p className="sm:text-xl text-md uppercase text-gray-200 font-bold mt-5">YOU</p>
+            </div>
+            <div className="mx-5 sm:mx-10">
+              {winner && (
+                <div className="hidden sm:block text-center">
+                  <p className="md:text-3xl sm:text-2xl uppercase text-gray-200 font-bold">
+                    {winner === "PLAYER"
+                      ? "You won"
+                      : winner === "COMPUTER"
+                        ? "You lost"
+                        : "Draw"}
+                  </p>
+                  {movesLeft !== 0 && (
+                    <button
+                      onClick={resetOrReplay}
+                      className="mt-2 text-md bg-blue-500 text-white font-medium py-1.5 w-full rounded-md outline-none border-none"
+                    >
+                      Replay
+                    </button>
+                  )}
+                </div>
+              )}
+            </div>
+            <div className="text-center">
+
+              <div
+                className={`bg-gray-200 md:w-60 sm:w-40 w-32 md:h-60 sm:h-40 h-32 flex justify-center items-center rounded-full hand-border border-${computerHand === "paper"
+                  ? "blue"
+                  : computerHand === "scissors"
+                    ? "yellow"
+                    : computerHand === "rock"
+                      ? "red"
+                      : "none"
+                  }-500`}
+              >
+                {hasTimerStarted ? (
+                  <p className="text-6xl text-gray-600 font-bold">{timer}</p>
+                ) : (
+                  <img
+                    className="md:w-20 sm:16"
+                    src={
+                      computerHand === "paper"
+                        ? paperImage
+                        : computerHand === "scissors"
+                          ? scissorsImage
+                          : rockImage
+                    }
+                    alt="Paper"
+                  />
+                )}
+              </div>
+              <p className="sm:text-xl text-md uppercase text-gray-200 font-bold mt-5">COMPUTER</p>
+            </div> </div>
+
+          <div className="mt-5">
             {winner && (
-              <div className="text-center">
-                <p className="text-xl text-gray-200 font-bold">
+              <div className="block sm:hidden text-center">
+                <p className="md:text-3xl sm:text-2xl uppercase text-gray-200 font-bold">
                   {winner === "PLAYER"
-                    ? "You won! 😀"
+                    ? "You won"
                     : winner === "COMPUTER"
-                      ? "You lost! 😕"
-                      : "Draw 😐"}
+                      ? "You lost"
+                      : "Draw"}
                 </p>
                 {movesLeft !== 0 && (
                   <button
                     onClick={resetOrReplay}
-                    className="mt-2 text-md bg-blue-500 text-white font-medium py-1.5 px-2.5 rounded-md outline-none border-none"
+                    className="mt-2 text-md bg-blue-500 text-white font-medium py-1.5 sm:px-0 px-5 w-full rounded-md outline-none border-none"
                   >
                     Replay
                   </button>
@@ -333,31 +392,7 @@ const HandPicker = (props: any) => {
               </div>
             )}
           </div>
-          <div
-            className={`bg-gray-200 w-60 h-60 flex justify-center items-center rounded-full hand-border border-${computerHand === "paper"
-              ? "blue"
-              : computerHand === "scissors"
-                ? "yellow"
-                : computerHand === "rock"
-                  ? "red"
-                  : "none"
-              }-500`}
-          >
-            {hasTimerStarted ? (
-              <p className="text-6xl text-gray-600 font-bold">{timer}</p>
-            ) : (
-              <img
-                src={
-                  computerHand === "paper"
-                    ? paperImage
-                    : computerHand === "scissors"
-                      ? scissorsImage
-                      : rockImage
-                }
-                alt="Paper"
-              />
-            )}
-          </div>
+
         </div>
       )}
     </div>

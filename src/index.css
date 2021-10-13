@@ -8,6 +8,7 @@ body {
   margin: 0;
   font-family: "Roboto", sans-serif;
   background-image: linear-gradient(60deg, #202730 0%, #313a42 100%);
+  height: 100vh;
 }
 
 code {
@@ -16,7 +17,7 @@ code {
 }
 
 .hand-border {
-  border-width: 16px;
+  border-width: 14px;
   border-style: solid;
 }
 
@@ -27,11 +28,11 @@ code {
 }
 
 .score-card {
-  height: 30vh;
+  margin-top: 5vh;
 }
 
 .hand-picker {
-  height: 70vh;
+  margin-top: 20vh;
 }
 
 .spinner {
@@ -67,6 +68,35 @@ code {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.replay-button {
+  display: block;
+}
+
+@media screen and (max-width: 752px) {
+  .hand-border {
+    border-width: 10px;
+    border-style: solid;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .hand-picker {
+    margin-top: 12vh;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .hand-picker {
+    margin-top: 10vh;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .replay-button {
+    display: none;
+  }
 }
 
 @keyframes pulse {
