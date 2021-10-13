@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-image: linear-gradient(60deg, #202730 0%, #313a42 100%);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.hand-border {
+  border-width: 16px;
+  border-style: solid;
+}
+
+.custom-shadow {
+  box-shadow: -3px 3px 10px -2px rgba(128, 198, 255, 0.68);
+  -webkit-box-shadow: -3px 3px 10px -2px rgba(128, 198, 255, 0.68);
+  -moz-box-shadow: -3px 3px 10px -2px rgba(128, 198, 255, 0.68);
+}
+
+.score-card {
+  height: 30vh;
+}
+
+.hand-picker {
+  height: 70vh;
+}
+
+.spinner {
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+}
+
+.pulse-animation {
+  animation-name: pulse;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.overlay {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}

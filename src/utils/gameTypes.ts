@@ -1,0 +1,8 @@
+export const UPDATE_PLAYER_SCORE = "UPDATE_PLAYER_SCORE";
+export const UPDATE_COMPUTER_SCORE = "UPDATE_COMPUTER_SCORE";
+export const RESET_SCORES = "RESET_SCORES";
+export const SET_GAME_STARTED = "SET_GAME_STARTED";
+export const SET_PLAYER_NAME = "SET_PLAYER_NAME";
+export const UPDATE_MOVES = "UPDATE_MOVES";
+export const SET_USER = "SET_USER";
+export const LOGOUT = "LOGOUT";
