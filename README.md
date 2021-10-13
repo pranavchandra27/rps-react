@@ -1,6 +1,6 @@
 ## Rock Paper Scissors Game.
 
-This front-end for rock-paper-scissors game
+This is front-end for rock-paper-scissors game
 
 ### Here are some screenshots
 
