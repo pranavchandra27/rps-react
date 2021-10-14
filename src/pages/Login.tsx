@@ -39,7 +39,7 @@ const Login = ({ setPlayerName, setUserData }: any) => {
   }
 
   return (
-    <div className="text-center">
+    <div className="text-center sm:px-0 px-2">
       <h2 className="text-gray-100 text-5xl mt-20">Ready to play</h2>
       <form onSubmit={handleSubmit} className='max-w-sm w-full mx-auto '>
         <div className="mt-20 focus-within:text-gray-600 bg-gray-200 focus-within:bg-gray-50 py-2 px-4 rounded-md shadow-lg">
